@@ -27,21 +27,21 @@ class Main extends React.Component {
   }).catch(err => console.log(err))
   }
 
-  //
-  // componentDidMount() {
-  //   axios.get(`${baseUrl}`)
-  //     .then(res => {
-  //       this.setState({ posts:res.data });
-  //     })
-  //     // .catch (err) => {
-  //     //   console.log(err);
-  //     // }
-  // };
-
+  
   componentDidMount() {
-    this.fetchPosts()
-    console.log();
-  }
+    axios.get(`${baseUrl}`)
+      .then(res => {
+        this.setState({ posts:res.data });
+      })
+      // .catch (err) => {
+      //   console.log(err);
+      // }
+  };
+
+  // componentDidMount() {
+  //   this.fetchPosts()
+  //   console.log();
+  // }
 
   render() {
     return(
