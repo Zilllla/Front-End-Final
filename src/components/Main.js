@@ -27,7 +27,7 @@ class Main extends React.Component {
   }).catch(err => console.log(err))
   }
 
-  
+
   componentDidMount() {
     axios.get(`${baseUrl}`)
       .then(res => {
@@ -46,12 +46,16 @@ class Main extends React.Component {
   render() {
     return(
       <div>
+      <h1>{this.props.view.pageTitle}</h1>
+      <div>
       {this.state.posts.map((postData) => (
         <Post
           key={postData.id}
           postData={postData}
+          handleView={this.props.handleView}
         />
       ))}
+      </div>
       </div>
     )
   }
