@@ -17,19 +17,19 @@ class Form extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    // if (this.props.view.page === 'newItem') {
+    if (this.props.view.page === 'newItem') {
       this.props.handleCreate(this.state)
-    // } else if(this.props.view.page === 'editItem') {
-    //   this.props.handleUpdate(this.state)
-    // }
+    } else if(this.props.view.page === 'editItem') {
+      this.props.handleUpdate(this.state)
+    }
   }
 
   componentDidMount() {
     this.setState({
-      title: this.props.inputs.title,
-      description: this.props.inputs.description,
-      completed: this.props.inputs.completed,
-      id: this.props.inputs.id
+      title: this.props.formInputs.title,
+      description: this.props.formInputs.description,
+      completed: this.props.formInputs.completed,
+      id: this.props.formInputs.id
     })
   }
 
@@ -40,7 +40,7 @@ class Form extends React.Component {
         <textarea placeholder="Description" id="description" value={this.state.description} onChange={this.handleChange} > </textarea>
         Completed:
         <input type="checkbox" id="completed" onChange={this.handleChange} />
-        <input type="submit" value="Create" />
+        <input type="submit" value="Submit" />
       </form>
     )
   }

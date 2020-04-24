@@ -18,6 +18,7 @@ class Main extends React.Component {
     }
   }
 
+//FETCH
   fetchPosts = () => {
   fetch(`${baseUrl}`)
   .then(data => data.json())
@@ -28,6 +29,7 @@ class Main extends React.Component {
   }).catch(err => console.log(err))
   }
 
+//CREATE
   handleCreate = (createData) => {
     console.log(createData);
     fetch(`${baseUrl}/post`, {
@@ -46,6 +48,40 @@ class Main extends React.Component {
         return {
           posts: prevState.posts
         }
+      })
+    }).catch(err => console.log(err))
+  }
+
+//UPDATE
+  handleUpdate = (updatedData) => {
+    console.log(updatedData);
+    fetch(`${baseUrl}/${updatedData.id}`, {
+      body: JSON.stringify(updatedData),
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(updatedItem => {
+      this.props.handleView('home')
+      this.fetchPosts()
+    }).catch(err => console.log(err))
+  }
+
+//DELETE
+  handleDelete = (id) => {
+    console.log(id);
+    fetch(`${baseUrl}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(json => {
+      this.fetchPosts()
+      this.setState(prevState => {
+        const posts = prevState.posts.filter(post => post._id !==id)
+        return {posts}
       })
     }).catch(err => console.log(err))
   }
@@ -72,15 +108,17 @@ class Main extends React.Component {
     { this.props.view.page === 'home' ?
        this.state.posts.map((postData) => (
         <Post
-          key={postData.id}
+          key={postData._id}
           postData={postData}
           handleView={this.props.handleView}
+          handleDelete={this.handleDelete}
         />
       ))
       : <Form
           handleCreate={this.handleCreate}
-          inputs={this.props.inputs}
+          formInputs={this.props.formInputs}
           view={this.props.view}
+          handleUpdate={this.handleUpdate}
         />
     }
       </div>

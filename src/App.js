@@ -13,7 +13,7 @@ class App extends React.Component {
         page: 'home',
         pageTitle: 'home page title'
       },
-      inputs: {
+      formInputs: {
         title: null,
         description: null,
         completed: null,
@@ -23,9 +23,8 @@ class App extends React.Component {
   }
 
   handleView = (view, postData) => {
-    console.log(postData);
     let pageTitle = '';
-    let inputs = {
+    let formInputs = {
       title: '',
       description: '',
       completed: false,
@@ -41,11 +40,11 @@ class App extends React.Component {
           break
       case 'editItem':
           pageTitle = 'edit item page title'
-          inputs = {
+          formInputs = {
             title: postData.title,
             description: postData.description,
             completed: postData.completed,
-            id: postData.id
+            id: postData._id
           }
           break
       default:
@@ -56,7 +55,7 @@ class App extends React.Component {
         page: view,
         pageTitle: pageTitle
       },
-      inputs: inputs
+      formInputs: formInputs
     })
   }
 
@@ -69,7 +68,7 @@ class App extends React.Component {
         <Main
           handleView={this.handleView}
           view={this.state.view}
-          inputs={this.state.inputs}
+          formInputs={this.state.formInputs}
         />
       </div>
     )
