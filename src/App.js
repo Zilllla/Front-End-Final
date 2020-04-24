@@ -22,7 +22,7 @@ class App extends React.Component {
     }
   }
 
-  handleView = (view, data) => {
+  handleView = (view, postData) => {
     let pageTitle = '';
     let inputs = {
       title: '',

@@ -28,24 +28,41 @@ class Main extends React.Component {
   }).catch(err => console.log(err))
   }
 
-  handleCreate = (data) => {
-    console.log(data);
+  handleCreate = (createData) => {
+    console.log(createData);
+    fetch(`${baseUrl}/post`, {
+      body: JSON.stringify(createData),
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(createdPost => {
+      return createdPost.json()
+    }).then(jsonedPost => {
+      this.props.handleView('home')
+      this.setState(prevState => {
+        prevState.posts = jsonedPost
+        return {
+          posts: prevState.posts
+        }
+      })
+    }).catch(err => console.log(err))
   }
 
-  componentDidMount() {
-    axios.get(`${baseUrl}`)
-      .then(res => {
-        this.setState({ posts:res.data });
-      })
-      // .catch (err) => {
-      //   console.log(err);
-      // }
-  };
-
   // componentDidMount() {
-  //   this.fetchPosts()
-  //   console.log();
-  // }
+  //   axios.get(`${baseUrl}`)
+  //     .then(res => {
+  //       this.setState({ posts:res.data });
+  //     })
+  //     // .catch (err) => {
+  //     //   console.log(err);
+  //     // }
+  // };
+
+  componentDidMount() {
+    this.fetchPosts()
+  }
 
   render() {
     return(
@@ -53,7 +70,7 @@ class Main extends React.Component {
       <h1>{this.props.view.pageTitle}</h1>
       <div>
       {this.props.view.page === 'home' ?
-        this.state.posts.map((postData) => (
+       this.state.posts.map((postData) => (
         <Post
           key={postData.id}
           postData={postData}
@@ -62,6 +79,8 @@ class Main extends React.Component {
       ))
       : <Form
           handleCreate={this.handleCreate}
+          inputs={this.props.inputs}
+          view={this.props.view}
         />
     }
       </div>
