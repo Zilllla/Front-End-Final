@@ -62,6 +62,7 @@ class App extends React.Component {
         <Main
           handleView={this.handleView}
           view={this.state.view}
+          inputs={this.state.inputs}
         />
       </div>
     )
