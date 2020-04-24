@@ -23,23 +23,30 @@ class App extends React.Component {
   }
 
   handleView = (view, postData) => {
+    console.log(postData);
     let pageTitle = '';
     let inputs = {
       title: '',
       description: '',
-      completed: '',
+      completed: false,
       id: null
     }
 
     switch (view) {
       case 'home':
         pageTitle = 'home page title'
-        break;
+        break
       case 'newItem':
           pageTitle = 'new item page title'
           break
       case 'editItem':
           pageTitle = 'edit item page title'
+          inputs = {
+            title: postData.title,
+            description: postData.description,
+            completed: postData.completed,
+            id: postData.id
+          }
           break
       default:
           break

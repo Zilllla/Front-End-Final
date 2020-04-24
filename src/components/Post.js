@@ -15,7 +15,11 @@ class Post extends React.Component {
 
       <div>
         <ul>
-          <li onClick={() => {this.props.handleView('editItem', this.props.postData)}}>Edit</li>
+          <li
+          // onClick={() =>
+          //   {this.props.handleView('editItem', this.props.postData)
+          // }}
+          >Edit</li>
           <li>Delete</li>
         </ul>
       </div>

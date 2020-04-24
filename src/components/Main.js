@@ -69,7 +69,7 @@ class Main extends React.Component {
       <div>
       <h1>{this.props.view.pageTitle}</h1>
       <div>
-      {this.props.view.page === 'home' ?
+    { this.props.view.page === 'home' ?
        this.state.posts.map((postData) => (
         <Post
           key={postData.id}

@@ -6,10 +6,10 @@ class Form extends React.Component {
     this.state = {
       title: '',
       description: '',
-      completed: '',
+      completed: false,
       id: null
     }
-  };
+  }
 
   handleChange = (e) => {
     this.setState({[e.target.id] : e.target.value})
@@ -17,11 +17,11 @@ class Form extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    if (this.props.view.page === 'newItem') {
+    // if (this.props.view.page === 'newItem') {
       this.props.handleCreate(this.state)
-    } else if(this.props.view.page === 'editItem') {
-      this.props.handleUpdate(this.state)
-    }
+    // } else if(this.props.view.page === 'editItem') {
+    //   this.props.handleUpdate(this.state)
+    // }
   }
 
   componentDidMount() {
