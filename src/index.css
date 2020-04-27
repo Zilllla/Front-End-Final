@@ -14,7 +14,6 @@ body {
   background-color: var(--lavendar);
   text-align: center;
   font-family: var(--Noto-Sans);
-  /* max-width: 80%; */
 }
 header {
   height: 70px;
@@ -38,7 +37,10 @@ nav li {
   display: inline;
   justify-content: center;
   padding: 40px;
-
+  transition: .2s ease-in-out;
+}
+nav li:hover {
+  color: var(--grey);
 }
 article {
   display: flex;
