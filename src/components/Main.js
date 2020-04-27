@@ -7,7 +7,7 @@ let baseUrl = '';
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'https://blooming-plateau-41459.herokuapp.com'
 } else {
-  console.log('this is for heroku');
+  baseUrl = 'https://blooming-plateau-41459.herokuapp.com'
 }
 
 class Main extends React.Component {
