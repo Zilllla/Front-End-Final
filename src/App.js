@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Main from './components/Main.js';
 import Nav from './components/Nav.js';
+import Header from './components/Header.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends React.Component {
     this.state = {
       view: {
         page: 'home',
-        pageTitle: 'home page title'
+        pageTitle: 'To Do List'
       },
       formInputs: {
         title: null,
@@ -33,13 +34,13 @@ class App extends React.Component {
 
     switch (view) {
       case 'home':
-        pageTitle = 'home page title'
+        pageTitle = 'To Do List'
         break
       case 'newItem':
-          pageTitle = 'new item page title'
+          pageTitle = 'Add To Do Item'
           break
       case 'editItem':
-          pageTitle = 'edit item page title'
+          pageTitle = 'Edit To Do Item'
           formInputs = {
             title: postData.title,
             description: postData.description,
@@ -62,6 +63,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
+        <Header />
         <Nav
           handleView={this.handleView}
         />

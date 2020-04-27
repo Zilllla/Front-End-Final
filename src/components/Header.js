@@ -4,9 +4,9 @@ class Header extends React.Component {
 
   render() {
     return(
-      <div>
-        Insert header shit here
-      </div>
+      <header>
+        <h1>To Do App</h1>
+      </header>
     )
   }
 }

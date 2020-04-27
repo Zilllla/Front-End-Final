@@ -31,7 +31,7 @@ class Main extends React.Component {
 
 //CREATE
   handleCreate = (createData) => {
-    console.log(createData);
+    console.log('create', createData);
     fetch(`${baseUrl}/post`, {
       body: JSON.stringify(createData),
       method: 'POST',
@@ -42,15 +42,17 @@ class Main extends React.Component {
     }).then(createdPost => {
       return createdPost.json()
     }).then(jsonedPost => {
+      console.log(jsonedPost)
       this.props.handleView('home')
       this.setState(prevState => {
+        console.log('state', prevState)
         prevState.posts = jsonedPost
         return {
           posts: prevState.posts
         }
       })
     }).catch(err => console.log(err))
-  }
+    }
 
 //UPDATE
   handleUpdate = (updatedData) => {

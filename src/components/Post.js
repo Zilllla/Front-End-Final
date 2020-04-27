@@ -1,19 +1,17 @@
 import React from 'react';
 
+
 class Post extends React.Component {
+
   render() {
     return(
     <article>
-      <div>
+      <div className="item-outer-container">
         <h2>{this.props.postData.title}</h2>
-      </div>
-
-      <div>
-        <p>{this.props.postData.description}</p>
+        <div className="item-inner-container">
+        <h3>{this.props.postData.description}</h3>
         <input type="checkbox" />
-      </div>
-
-      <div>
+        <div className="edit-delete-container">
         <ul>
           <li
           onClick={() =>
@@ -25,6 +23,8 @@ class Post extends React.Component {
             {this.props.handleDelete(this.props.postData._id)}}
             >Delete</li>
         </ul>
+      </div>
+      </div>
       </div>
     </article>
     )

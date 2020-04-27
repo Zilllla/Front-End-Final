@@ -35,13 +35,21 @@ class Form extends React.Component {
 
   render() {
     return(
+      <article>
+      <div className="form-outer-container">
+      <br/>
+      <div className="form-inner-container">
       <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Title" id="title" value={this.state.title} onChange={this.handleChange} />
-        <textarea placeholder="Description" id="description" value={this.state.description} onChange={this.handleChange} > </textarea>
+        <input type="text" placeholder="Title" id="title" value={this.state.title} onChange={this.handleChange} /><br/>
+        <textarea placeholder="Description" id="description" value={this.state.description} onChange={this.handleChange} > </textarea><br/>
         Completed:
         <input type="checkbox" id="completed" onChange={this.handleChange} />
+        <br/>
         <input type="submit" value="Submit" />
       </form>
+      </div>
+      </div>
+      </article>
     )
   }
 }
